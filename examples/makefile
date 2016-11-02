@@ -18,7 +18,8 @@ FILES :=                \
     Consts              \
     Arrays              \
     FunctionOverloading \
-    Move
+    Move                \
+    Classes
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++

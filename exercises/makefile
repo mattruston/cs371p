@@ -11,7 +11,8 @@ FILES :=          \
     RangeIterator \
     Range         \
     Vector1       \
-    Vector2
+    Vector2       \
+    Vector3
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
