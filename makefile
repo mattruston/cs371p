@@ -169,6 +169,7 @@ sync:
     --include "Vector3.h"                    \
     --include "Memory.h"                     \
     --include "Vector4.c++"                  \
+    --include "Vector4.h"                    \
     --exclude "*"                            \
     ../../exercises/c++/ exercises
 	@rsync -r -t -u -v --delete              \
