@@ -19,7 +19,8 @@ FILES :=                \
     Arrays              \
     FunctionOverloading \
     Move                \
-    Classes
+    Classes             \
+    MethodOverriding1
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
