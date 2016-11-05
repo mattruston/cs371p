@@ -19,7 +19,6 @@ FILES :=                \
     Arrays              \
     FunctionOverloading \
     Move                \
-    Classes             \
     MethodOverriding1
 
 ifeq ($(shell uname), Darwin)                                           # Apple
