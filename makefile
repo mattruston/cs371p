@@ -137,7 +137,6 @@ sync:
     --include "Arrays.c++"                   \
     --include "FunctionOverloading.c++"      \
     --include "Move.c++"                     \
-    --include "Classes.c++"                  \
     --include "MethodOverriding1.c++"        \
     --exclude "*"                            \
     ../../examples/c++/ examples
