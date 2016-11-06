@@ -2,17 +2,17 @@
 
 .DEFAULT_GOAL := test
 
-FILES :=                              \
-    .gitignore                        \
-    Collatz.c++                       \
-    Collatz.h                         \
-    Collatz.log                       \
-    html                              \
-    makefile                          \
-    RunCollatz.c++                    \
-    RunCollatz.in                     \
-    RunCollatz.out                    \
-    TestCollatz.c++                   \
+FILES :=            \
+    .gitignore      \
+    Collatz.c++     \
+    Collatz.h       \
+    Collatz.log     \
+    html            \
+    makefile        \
+    RunCollatz.c++  \
+    RunCollatz.in   \
+    RunCollatz.out  \
+    TestCollatz.c++ \
     TestCollatz.out
 
 # uncomment these:

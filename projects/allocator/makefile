@@ -2,13 +2,13 @@
 
 .DEFAULT_GOAL := test
 
-FILES :=                                  \
-    .gitignore                            \
-    Allocator.h                           \
-    Allocator.log                         \
-    html                                  \
-    makefile                              \
-    TestAllocator.c++                     \
+FILES :=              \
+    .gitignore        \
+    Allocator.h       \
+    Allocator.log     \
+    html              \
+    makefile          \
+    TestAllocator.c++ \
     TestAllocator.out
 
 # uncomment these:

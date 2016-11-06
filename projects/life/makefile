@@ -1,26 +1,25 @@
-.PHONY: Darwin.log
+.PHONY: Life.log
 
 .DEFAULT_GOAL := test
 
-FILES :=           \
-    .gitignore     \
-    Darwin.c++     \
-    Darwin.h       \
-    Darwin.log     \
-    html           \
-    makefile       \
-    RunDarwin.c++  \
-    RunDarwin.out  \
-    TestDarwin.c++ \
-    TestDarwin.out
+FILES :=         \
+    .gitignore   \
+    Life.h       \
+    Life.log     \
+    html         \
+    makefile     \
+    RunLife.c++  \
+    RunLife.out  \
+    TestLife.c++ \
+    TestLife.out
 
 # uncomment these:
 #    .travis.yml                     \
-#    darwin-tests/EID-RunDarwin.out  \
-#    darwin-tests/EID-TestDarwin.c++ \
-#    darwin-tests/EID-TestDarwin.out \
+#    Life-tests/EID-RunLife.out  \
+#    Life-tests/EID-TestLife.c++ \
+#    Life-tests/EID-TestLife.out \
 
-ifeq ($(shell uname), Darwin)                                           # Apple
+ifeq ($(shell uname), Life)                                           # Apple
     CXX          := g++
     INCLUDE      := /usr/local/include
     CXXFLAGS     := -pedantic -std=c++11 -I$(INCLUDE) -Wall -Weffc++
@@ -70,14 +69,14 @@ else                                                                    # UTCS
     CLANG-FORMAT := clang-format-3.8
 endif
 
-darwin-tests:
-	git clone https://github.com/cs371p-fall-2016/darwin-tests.git
+Life-tests:
+	git clone https://github.com/cs371p-fall-2016/Life-tests.git
 
-html: Doxyfile Darwin.h Darwin.c++ RunDarwin.c++ TestDarwin.c++
+html: Doxyfile Life.h RunLife.c++ TestLife.c++
 	doxygen Doxyfile
 
-Darwin.log:
-	git log > Darwin.log
+Life.log:
+	git log > Life.log
 
 Doxyfile:
 	doxygen -g
@@ -87,27 +86,25 @@ Doxyfile:
 # EXTRACT_PRIVATE        = YES
 # EXTRACT_STATIC         = YES
 
-RunDarwin: Darwin.h Darwin.c++ RunDarwin.c++
-	$(CXX) $(CXXFLAGS) Darwin.c++ RunDarwin.c++ -o RunDarwin
-	-$(CLANG-CHECK) -extra-arg=-std=c++11          Darwin.c++     --
-	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze Darwin.c++     --
-	-$(CLANG-CHECK) -extra-arg=-std=c++11          RunDarwin.c++  --
-	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze RunDarwin.c++  --
+RunLife: Life.h RunLife.c++
+	$(CXX) $(CXXFLAGS) RunLife.c++ -o RunLife
+	-$(CLANG-CHECK) -extra-arg=-std=c++11          RunLife.c++  --
+	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze RunLife.c++  --
 
-RunDarwin.tmp: RunDarwin
-	./RunDarwin > RunDarwin.tmp
-	diff RunDarwin.tmp RunDarwin.out
+RunLife.tmp: RunLife
+	./RunLife > RunLife.tmp
+	diff RunLife.tmp RunLife.out
 
-TestDarwin: Darwin.h Darwin.c++ TestDarwin.c++
-	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Darwin.c++ TestDarwin.c++ -o TestDarwin $(LDFLAGS)
-	-$(CLANG-CHECK) -extra-arg=-std=c++11          TestDarwin.c++ --
-	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze TestDarwin.c++ --
+TestLife: Life.h TestLife.c++
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) TestLife.c++ -o TestLife $(LDFLAGS)
+	-$(CLANG-CHECK) -extra-arg=-std=c++11          TestLife.c++ --
+	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze TestLife.c++ --
 
-TestDarwin.tmp: TestDarwin
-	$(VALGRIND) ./TestDarwin                                       >  TestDarwin.tmp 2>&1
-	-$(GCOV) -b Darwin.c++     | grep -A 5 "File 'Darwin.c++'"     >> TestDarwin.tmp
-	-$(GCOV) -b TestDarwin.c++ | grep -A 5 "File 'TestDarwin.c++'" >> TestDarwin.tmp
-	cat TestDarwin.tmp
+TestLife.tmp: TestLife
+	$(VALGRIND) ./TestLife                                     >  TestLife.tmp 2>&1
+	-$(GCOV) -b TestLife.c++ | grep -A 5 "File 'Life.h'"       >> TestLife.tmp
+	-$(GCOV) -b TestLife.c++ | grep -A 5 "File 'TestLife.c++'" >> TestLife.tmp
+	cat TestLife.tmp
 
 check:
 	@not_found=0;                                 \
@@ -135,12 +132,12 @@ clean:
 	rm -f  *.gcno
 	rm -f  *.gcov
 	rm -f  *.plist
-	rm -f  Darwin.log
+	rm -f  Life.log
 	rm -f  Doxyfile
-	rm -f  RunDarwin
-	rm -f  RunDarwin.tmp
-	rm -f  TestDarwin
-	rm -f  TestDarwin.tmp
+	rm -f  RunLife
+	rm -f  RunLife.tmp
+	rm -f  TestLife
+	rm -f  TestLife.tmp
 	rm -rf *.dSYM
 	rm -rf html
 	rm -rf latex
@@ -149,10 +146,10 @@ config:
 	git config -l
 
 format:
-	$(CLANG-FORMAT) -i Darwin.c++
-	$(CLANG-FORMAT) -i Darwin.h
-	$(CLANG-FORMAT) -i RunDarwin.c++
-	$(CLANG-FORMAT) -i TestDarwin.c++
+	$(CLANG-FORMAT) -i Life.c++
+	$(CLANG-FORMAT) -i Life.h
+	$(CLANG-FORMAT) -i RunLife.c++
+	$(CLANG-FORMAT) -i TestLife.c++
 
 status:
 	make clean
@@ -161,7 +158,7 @@ status:
 	git remote -v
 	git status
 
-test: html Darwin.log RunDarwin.tmp TestDarwin.tmp darwin-tests check
+test: html Life.log RunLife.tmp TestLife.tmp Life-tests check
 
 versions:
 	which make
