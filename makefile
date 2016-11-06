@@ -199,6 +199,15 @@ sync:
     --include "TestDarwin.out"               \
     --exclude "*"                            \
     ../../projects/c++/darwin/ projects/darwin
+	@rsync -r -t -u -v --delete              \
+    --include "Life.h"                       \
+    --include "RunLife.c++"                  \
+    --include "RunLife.in"                   \
+    --include "RunLife.out"                  \
+    --include "TestLife.c++"                 \
+    --include "TestLife.out"                 \
+    --exclude "*"                            \
+    ../../projects/c++/life/ projects/life
 
 test:
 	make clean
