@@ -19,7 +19,7 @@ FILES :=         \
 #    Life-tests/EID-TestLife.c++ \
 #    Life-tests/EID-TestLife.out \
 
-ifeq ($(shell uname), Life)                                           # Apple
+ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
     INCLUDE      := /usr/local/include
     CXXFLAGS     := -pedantic -std=c++11 -I$(INCLUDE) -Wall -Weffc++
