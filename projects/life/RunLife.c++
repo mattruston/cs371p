@@ -44,7 +44,7 @@ int main () {
     // Life<ConwayCell> 109x69
     // -----------------------
 
-    cout << "*** Life<ConwayCell> 106x69 ***" << endl;
+    cout << "*** Life<ConwayCell> 109x69 ***" << endl;
     /*
     Simulate 283 evolutions.
     Print the first 10 grids (i.e. 0, 1, 2, ... 9).
