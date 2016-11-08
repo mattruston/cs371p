@@ -146,7 +146,6 @@ config:
 	git config -l
 
 format:
-	$(CLANG-FORMAT) -i Life.c++
 	$(CLANG-FORMAT) -i Life.h
 	$(CLANG-FORMAT) -i RunLife.c++
 	$(CLANG-FORMAT) -i TestLife.c++
