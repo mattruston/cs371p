@@ -12,7 +12,8 @@ FILES :=          \
     Range         \
     Vector1       \
     Vector2       \
-    Vector3
+    Vector3       \
+    Shapes1
 
 ifeq ($(shell uname), Darwin)                                           # Apple
     CXX          := g++
