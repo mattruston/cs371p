@@ -9,12 +9,14 @@ FILES :=         \
     html         \
     makefile     \
     RunLife.c++  \
+    RunLife.in   \
     RunLife.out  \
     TestLife.c++ \
     TestLife.out
 
 # uncomment these:
-#    .travis.yml                     \
+#    .travis.yml                 \
+#    Life-tests/EID-RunLife.in   \
 #    Life-tests/EID-RunLife.out  \
 #    Life-tests/EID-TestLife.c++ \
 #    Life-tests/EID-TestLife.out \
@@ -92,7 +94,7 @@ RunLife: Life.h RunLife.c++
 	-$(CLANG-CHECK) -extra-arg=-std=c++11 -analyze RunLife.c++  --
 
 RunLife.tmp: RunLife
-	./RunLife > RunLife.tmp
+	./RunLife < RunLife.in > RunLife.tmp
 	diff RunLife.tmp RunLife.out
 
 TestLife: Life.h TestLife.c++
