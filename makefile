@@ -98,6 +98,7 @@ push:
 	git add Dockerfile
 	git add examples
 	git add exercises
+	git add notes
 	git add makefile
 	git add projects/collatz
 	git add projects/allocator
