@@ -35,7 +35,7 @@ class Circle : public Shape {
                 _r    (rhs._r)
             {}
 */
-          ~Circle () = default;
+        ~Circle () = default;
 /*
         ~Circle ()
             {}
