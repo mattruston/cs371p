@@ -42,23 +42,11 @@ class Shape {
             {}
 
         Shape (const Shape&) = default;
-/*
-        Shape (const Shape& rhs) :
-                _x (rhs._x),
-                _y (rhs._y)
-            {}
-*/
 
         virtual ~Shape ()
             {}
 
         Shape& operator = (const Shape&) = default;
-/*
-        Shape& operator = (const Shape& rhs) {
-            _x = rhs._x;
-            _y = rhs._y;
-            return *this;}
-*/
 
         virtual double area () const {
             return 0;}
