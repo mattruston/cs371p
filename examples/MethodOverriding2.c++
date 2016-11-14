@@ -19,13 +19,13 @@ struct A {
         return "A::h";}};
 
 struct B : A {
-    std::string f (int) {
+    std::string f (int)  {
         return "B::f";}
 
-    std::string g (double) {    // warning: 'B::g' hides overloaded virtual function
+    std::string g (double) {      // warning: 'B::g' hides overloaded virtual function
         return "B::g";}
 
-    std::string h (int) const { // warning: 'B::h' hides overloaded virtual function
+    std::string h (int) const {   // warning: 'B::h' hides overloaded virtual function
         return "B::h";}};
 
 int main () {
